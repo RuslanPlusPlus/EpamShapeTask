@@ -1,4 +1,4 @@
-package by.ruslan.quadrangle;
+package by.ruslan.quadrangle.launcher;
 
 import by.ruslan.quadrangle.entity.CustomPoint;
 import by.ruslan.quadrangle.exception.ShapeException;
