@@ -2,7 +2,6 @@ package by.ruslan.quadrangle.factory;
 
 import by.ruslan.quadrangle.entity.CustomPoint;
 import by.ruslan.quadrangle.entity.CustomQuadrangle;
-import by.ruslan.quadrangle.entity.CustomShape;
 import by.ruslan.quadrangle.exception.ShapeException;
 
 public class CustomQuadrangleFactory extends CustomShapeFactory{

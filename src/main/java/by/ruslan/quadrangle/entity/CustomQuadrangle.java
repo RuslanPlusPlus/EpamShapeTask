@@ -5,7 +5,7 @@ import by.ruslan.quadrangle.validator.CreateValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class CustomQuadrangle extends CustomShape{
+public class CustomQuadrangle extends CustomPlaneShape {
     static final Logger logger = LogManager.getLogger();
     private CustomPoint pointA;
     private CustomPoint pointB;

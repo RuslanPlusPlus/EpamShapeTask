@@ -1,7 +1,7 @@
 package repository.impl;
 
-import by.ruslan.quadrangle.entity.CustomShape;
-import repository.IRepository;
+import by.ruslan.quadrangle.entity.CustomPlaneShape;
+import repository.Repository;
 import repository.Specification;
 
 import java.util.ArrayList;
@@ -9,43 +9,45 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CustomShapeRepository implements IRepository<CustomShape> {
+public class CustomShapeRepository implements Repository<CustomPlaneShape> {
 
-    private List<CustomShape> shapes = new ArrayList<>();
+    private List<CustomPlaneShape> shapes = new ArrayList<>();
 
     @Override
-    public boolean add(CustomShape shape) {
+    public boolean add(CustomPlaneShape shape) {
         return shapes.add(shape);
     }
 
     @Override
-    public boolean remove(CustomShape shape) {
+    public boolean remove(CustomPlaneShape shape) {
         return shapes.remove(shape);
     }
 
     @Override
-    public CustomShape get(int index) {
+    public CustomPlaneShape get(int index) {
         return shapes.get(index);
     }
 
     @Override
-    public boolean addAll(Collection<? extends CustomShape> collection) {
+    public boolean addAll(Collection<? extends CustomPlaneShape> collection) {
         return shapes.addAll(collection);
     }
 
     @Override
-    public boolean removeAll(Collection<CustomShape> collection) {
+    public boolean removeAll(Collection<CustomPlaneShape> collection) {
         return shapes.removeAll(collection);
     }
 
     @Override
-    public CustomShape set(int index, CustomShape shape) {
+    public CustomPlaneShape set(int index, CustomPlaneShape shape) {
         return shapes.set(index, shape);
     }
 
     @Override
-    public List<CustomShape> query(Specification<CustomShape> specification) {
-        List<CustomShape> list = shapes.stream().filter(o -> specification.specify(o)).collect(Collectors.toList());
+    public List<CustomPlaneShape> query(Specification<CustomPlaneShape> specification) {
+        List<CustomPlaneShape> list = shapes.stream().filter(o -> specification.specify(o)).collect(Collectors.toList());
         return list;
     }
+
+
 }

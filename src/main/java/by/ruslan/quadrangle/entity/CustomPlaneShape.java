@@ -2,13 +2,13 @@ package by.ruslan.quadrangle.entity;
 
 import by.ruslan.quadrangle.generator.IdGenerator;
 
-public abstract class CustomShape {
+public abstract class CustomPlaneShape {
     private long id;
     private String name ;
 
-    public CustomShape(String name){
+    public CustomPlaneShape(String name){
         this.name = name;
-        id = IdGenerator.getId();
+        id = IdGenerator.generateId();
     }
 
     public long getId() {

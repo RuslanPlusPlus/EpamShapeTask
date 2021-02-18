@@ -1,14 +1,7 @@
 package by.ruslan.quadrangle.launcher;
 
-import by.ruslan.quadrangle.entity.CustomPoint;
-import by.ruslan.quadrangle.exception.ShapeException;
-import by.ruslan.quadrangle.parser.DataParser;
-import by.ruslan.quadrangle.parser.impl.DataParserImpl;
-import by.ruslan.quadrangle.validator.CreateValidator;
+import by.ruslan.quadrangle.entity.Pop;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 public class Main {
 
@@ -29,16 +22,6 @@ public class Main {
         } catch (ShapeException e) {
             e.printStackTrace();
         }*/
-        CustomPoint pointA = new CustomPoint(3.2, 2.4);
-        CustomPoint pointB = new CustomPoint(3.2, 2.7);
-        CustomPoint pointC = new CustomPoint(3.6, 2.4);
-        CustomPoint pointD = new CustomPoint(3.2, 4.4);
-        CustomPoint[] points = new CustomPoint[4];
-        points[0] = pointA;
-        points[1] = pointB;
-        points[2] = pointC;
-        points[3] = pointD;
-        System.out.println(CreateValidator.isPossibleToCreateQuadrangle(points));
 
     }
 }

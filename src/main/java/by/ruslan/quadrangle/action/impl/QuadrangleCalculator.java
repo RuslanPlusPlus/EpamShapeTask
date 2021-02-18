@@ -3,16 +3,18 @@ package by.ruslan.quadrangle.action.impl;
 import by.ruslan.quadrangle.action.ShapeCalculator;
 import by.ruslan.quadrangle.entity.CustomPoint;
 import by.ruslan.quadrangle.entity.CustomQuadrangle;
-import by.ruslan.quadrangle.entity.CustomShape;
+import by.ruslan.quadrangle.entity.CustomPlaneShape;
 import by.ruslan.quadrangle.exception.ShapeException;
 
 public class QuadrangleCalculator implements ShapeCalculator {
     @Override
-    public double findSquare(CustomShape shape) {
+    public double findSquare(CustomPlaneShape shape) {
         return 0;
     }
 
-    public double findPerimeter(CustomQuadrangle quadrangle) throws ShapeException {
+    @Override
+    public double findPerimeter(CustomPlaneShape shape) throws ShapeException {
+        CustomQuadrangle quadrangle = (CustomQuadrangle) shape;
         CustomPoint pointA = quadrangle.getPointA();
         CustomPoint pointB = quadrangle.getPointB();
         CustomPoint pointC = quadrangle.getPointC();
