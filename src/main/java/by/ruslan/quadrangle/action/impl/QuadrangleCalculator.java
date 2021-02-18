@@ -14,6 +14,9 @@ public class QuadrangleCalculator implements ShapeCalculator {
 
     @Override
     public double findPerimeter(CustomPlaneShape shape) throws ShapeException {
+        if (shape.getClass() != CustomQuadrangle.class){
+            throw new ShapeException("Not compatible class. CustomQuadrangle object must be passed!");
+        }
         CustomQuadrangle quadrangle = (CustomQuadrangle) shape;
         CustomPoint pointA = quadrangle.getPointA();
         CustomPoint pointB = quadrangle.getPointB();
