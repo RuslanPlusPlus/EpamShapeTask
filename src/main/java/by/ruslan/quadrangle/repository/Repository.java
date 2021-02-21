@@ -1,7 +1,6 @@
-package repository;
+package by.ruslan.quadrangle.repository;
 
 import by.ruslan.quadrangle.entity.CustomPlaneShape;
-import by.ruslan.quadrangle.entity.CustomQuadrangle;
 
 import java.util.Collection;
 import java.util.Comparator;

@@ -1,7 +1,7 @@
-package repository.impl;
+package by.ruslan.quadrangle.repository.impl;
 
 import by.ruslan.quadrangle.entity.CustomPlaneShape;
-import repository.Specification;
+import by.ruslan.quadrangle.repository.Specification;
 
 public class NameSpecification implements Specification<CustomPlaneShape> {
     private String name;

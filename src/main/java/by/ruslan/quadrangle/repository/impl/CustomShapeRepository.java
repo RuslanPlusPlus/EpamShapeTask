@@ -1,10 +1,10 @@
-package repository.impl;
+package by.ruslan.quadrangle.repository.impl;
 
 import by.ruslan.quadrangle.entity.CustomPlaneShape;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import repository.Repository;
-import repository.Specification;
+import by.ruslan.quadrangle.repository.Repository;
+import by.ruslan.quadrangle.repository.Specification;
 
 import java.util.*;
 import java.util.stream.Collectors;

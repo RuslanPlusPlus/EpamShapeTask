@@ -1,9 +1,9 @@
-package repository.impl;
+package by.ruslan.quadrangle.repository.impl;
 
 import by.ruslan.quadrangle.action.PlaneShapeCalculator;
 import by.ruslan.quadrangle.entity.CustomPlaneShape;
 import by.ruslan.quadrangle.exception.ShapeException;
-import repository.Specification;
+import by.ruslan.quadrangle.repository.Specification;
 
 public class PerimeterRangeSpecification implements Specification<CustomPlaneShape> {
 
