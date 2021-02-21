@@ -1,17 +1,25 @@
 package repository.impl;
 
 import by.ruslan.quadrangle.entity.CustomPlaneShape;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import repository.Repository;
 import repository.Specification;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class CustomShapeRepository implements Repository<CustomPlaneShape> {
 
+    static final Logger logger = LogManager.getLogger();
     private List<CustomPlaneShape> shapes = new ArrayList<>();
+    private static final CustomShapeRepository repository = new CustomShapeRepository();
+
+    public static CustomShapeRepository getInstance(){
+        return repository;
+    }
+
+    private CustomShapeRepository(){}
 
     @Override
     public boolean add(CustomPlaneShape shape) {
@@ -24,8 +32,13 @@ public class CustomShapeRepository implements Repository<CustomPlaneShape> {
     }
 
     @Override
-    public CustomPlaneShape get(int index) {
-        return shapes.get(index);
+    public List<CustomPlaneShape> getAll() {
+        return Collections.unmodifiableList(shapes);
+    }
+
+    @Override
+    public Optional<CustomPlaneShape> get(int index) {
+        return Optional.of(shapes.get(index));
     }
 
     @Override
@@ -47,6 +60,13 @@ public class CustomShapeRepository implements Repository<CustomPlaneShape> {
     public List<CustomPlaneShape> query(Specification<CustomPlaneShape> specification) {
         List<CustomPlaneShape> list = shapes.stream().filter(o -> specification.specify(o)).collect(Collectors.toList());
         return list;
+    }
+
+    @Override
+    public List<CustomPlaneShape> sort(Comparator<CustomPlaneShape> comparator) {
+        shapes.sort(comparator);
+        logger.info("Repository values sorted by comparator " + comparator.getClass());
+        return shapes;
     }
 
 

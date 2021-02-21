@@ -1,40 +1,41 @@
 package by.ruslan.quadrangle.entity;
 
 import by.ruslan.quadrangle.exception.ShapeException;
+import by.ruslan.quadrangle.factory.CustomQuadrangleFactory;
+import by.ruslan.quadrangle.observer.Observable;
+import by.ruslan.quadrangle.observer.CustomObserver;
+import by.ruslan.quadrangle.observer.QuadrangleEvent;
 import by.ruslan.quadrangle.validator.CreateValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class CustomQuadrangle extends CustomPlaneShape {
+import java.util.ArrayList;
+import java.util.List;
+
+public class CustomQuadrangle extends CustomPlaneShape implements Observable {
     static final Logger logger = LogManager.getLogger();
     private CustomPoint pointA;
     private CustomPoint pointB;
     private CustomPoint pointC;
     private CustomPoint pointD;
+    private List<CustomObserver> customObservers = new ArrayList<>();
 
-    public CustomQuadrangle(CustomPoint pointA, CustomPoint pointB, CustomPoint pointC,
-                            CustomPoint pointD, String name) throws ShapeException {
+    public CustomQuadrangle(String name, CustomPoint...points) throws ShapeException {
         super(name);
-        if (!CreateValidator.isPossibleToCreateQuadrangle(pointA, pointB, pointC, pointD)){
-            throw new ShapeException("Impossible to create quadrangle with such points");
-        }
-        this.pointA = pointA;
-        this.pointB = pointB;
-        this.pointC = pointC;
-        this.pointD = pointD;
-        logger.info("New CustomQuadrangle object created");
-    }
-
-    public CustomQuadrangle(CustomPoint[] points, String name) throws ShapeException {
-        super(name);
-        if (!CreateValidator.isPossibleToCreateQuadrangle(points)){
-            throw new ShapeException("Impossible to create quadrangle with such points");
-        }
         this.pointA = points[0];
         this.pointB = points[1];
         this.pointC = points[2];
         this.pointD = points[3];
         logger.info("New CustomQuadrangle object created");
+    }
+
+    public CustomPoint[] getPoints(){
+        CustomPoint[] points = new CustomPoint[4];
+        points[0] = pointA;
+        points[1] = pointB;
+        points[2] = pointC;
+        points[3] = pointD;
+        return points.clone();
     }
 
     public CustomPoint getPointA() throws ShapeException {
@@ -51,6 +52,8 @@ public class CustomQuadrangle extends CustomPlaneShape {
         }
         this.pointA = pointA;
         logger.info("PointA is reset to " + pointA);
+        CustomQuadrangleFactory.sortPointsInTraversingOrder(getPoints());
+        notifyObservers();
     }
 
     public CustomPoint getPointB() throws ShapeException {
@@ -67,6 +70,8 @@ public class CustomQuadrangle extends CustomPlaneShape {
         }
         this.pointB = pointB;
         logger.info("PointB is reset to " + pointB);
+        CustomQuadrangleFactory.sortPointsInTraversingOrder(getPoints());
+        notifyObservers();
     }
 
     public CustomPoint getPointC() throws ShapeException {
@@ -83,6 +88,8 @@ public class CustomQuadrangle extends CustomPlaneShape {
         }
         this.pointC = pointC;
         logger.info("PointC is reset to " + pointC);
+        CustomQuadrangleFactory.sortPointsInTraversingOrder(getPoints());
+        notifyObservers();
     }
 
     public CustomPoint getPointD() throws ShapeException {
@@ -99,6 +106,8 @@ public class CustomQuadrangle extends CustomPlaneShape {
         }
         this.pointD = pointD;
         logger.info("PointD is reset to " + pointD);
+        CustomQuadrangleFactory.sortPointsInTraversingOrder(getPoints());
+        notifyObservers();
     }
 
     @Override
@@ -133,5 +142,29 @@ public class CustomQuadrangle extends CustomPlaneShape {
                 .append(", pointD=").append(pointD)
                 .append("}");
         return builder.toString();
+    }
+
+    @Override
+    public void attach(CustomObserver customObserver) {
+        if (customObserver != null){
+            customObservers.add(customObserver);
+        }
+    }
+
+    @Override
+    public void detach(CustomObserver customObserver) {
+        customObservers.remove(customObserver);
+    }
+
+    @Override
+    public void notifyObservers() {
+        QuadrangleEvent event = new QuadrangleEvent(this);
+        customObservers.forEach(o -> {
+            try {
+                o.parameterChanged(event);
+            } catch (ShapeException e) {
+                logger.error(e.getMessage());
+            }
+        });
     }
 }

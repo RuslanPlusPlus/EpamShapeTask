@@ -5,6 +5,7 @@ import by.ruslan.quadrangle.reader.DataReader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -33,4 +34,5 @@ public class DataReaderImpl implements DataReader {
         logger.info("File " + fileName + " is successfully read");
         return lines;
     }
+
 }

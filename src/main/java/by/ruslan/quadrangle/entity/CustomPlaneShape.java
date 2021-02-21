@@ -1,6 +1,6 @@
 package by.ruslan.quadrangle.entity;
 
-import by.ruslan.quadrangle.generator.IdGenerator;
+import by.ruslan.quadrangle.util.IdGenerator;
 
 public abstract class CustomPlaneShape {
     private long id;

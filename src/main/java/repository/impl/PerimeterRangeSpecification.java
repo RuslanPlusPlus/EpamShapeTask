@@ -1,7 +1,6 @@
 package repository.impl;
 
-import by.ruslan.quadrangle.action.ShapeCalculator;
-import by.ruslan.quadrangle.action.impl.QuadrangleCalculator;
+import by.ruslan.quadrangle.action.PlaneShapeCalculator;
 import by.ruslan.quadrangle.entity.CustomPlaneShape;
 import by.ruslan.quadrangle.exception.ShapeException;
 import repository.Specification;
@@ -10,9 +9,9 @@ public class PerimeterRangeSpecification implements Specification<CustomPlaneSha
 
     private double minValue;
     private double maxValue;
-    private ShapeCalculator calculator;
+    private PlaneShapeCalculator calculator;
 
-    public PerimeterRangeSpecification(double minValue, double maxValue, ShapeCalculator calculator){
+    public PerimeterRangeSpecification(double minValue, double maxValue, PlaneShapeCalculator calculator){
         this.minValue = minValue;
         this.maxValue = maxValue;
         this.calculator = calculator;

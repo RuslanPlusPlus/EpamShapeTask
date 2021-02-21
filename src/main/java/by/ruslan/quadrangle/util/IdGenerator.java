@@ -1,4 +1,4 @@
-package by.ruslan.quadrangle.generator;
+package by.ruslan.quadrangle.util;
 
 public class IdGenerator {
     private static long IdIncr = 0;
